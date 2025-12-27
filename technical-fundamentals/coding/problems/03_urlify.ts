@@ -5,5 +5,9 @@
 // and that you are given the "true" length of the string.
 
 export default function URLify (s1 : string): string {
-
+    let res = ''
+    for (const ch of s1) {
+        res += ch === ' ' ? '%20' : ch
+    }
+    return res
 }
