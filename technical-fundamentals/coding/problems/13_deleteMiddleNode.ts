@@ -11,6 +11,7 @@
 // ```
 
 import { LinkedList } from "./10_LinkedList";
+import {powerSet} from "./44_powerSet";
 
 export type Node<T> = {
   value: T;
@@ -20,4 +21,12 @@ export type Node<T> = {
 export default function deleteMiddleNode<T>(
   head: Node<T>,
   position: number,
-): Node<T> | undefined {}
+): Node<T> | undefined {
+  const list = new LinkedList<T>(head)
+
+  const length = list.length()
+  if (position === length - 1 || position === 0) return head
+
+  const ret = list.filter((node, index) => index !== position)
+  return ret.head
+}

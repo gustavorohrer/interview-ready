@@ -22,4 +22,11 @@ export type Node<T> = {
 export default function partition<T>(
   head: Node<T> | undefined,
   x: T,
-): Node<T> | undefined {}
+): Node<T> | undefined {
+  const list = new LinkedList<T>(head)
+
+  const left = list.filter((node) => node.value < x)
+  const right = list.filter((node) => node.value >= x)
+
+  return left.merge(right).head
+}

@@ -12,4 +12,16 @@ export type Node<T> = {
   next?: Node<T>;
 };
 
-export default function removeDups<T>(head?: Node<T>): Node<T> | undefined {}
+export default function removeDups<T>(head?: Node<T>): Node<T> | undefined {
+  const list = new LinkedList<T>(head)
+
+  const set = new Set<T>()
+
+  const result = list.filter((node) => {
+    if (set.has(node.value)) return false
+    set.add(node.value)
+    return true
+  })
+
+  return result.head
+}
